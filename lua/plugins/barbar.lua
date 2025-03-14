@@ -8,9 +8,6 @@ return {
     init = function() vim.g.barbar_auto_setup = false end,
     opts = {
         animation = false,
-        sidebar_filetypes = {
-            NvimTree = true,
-        },
     },
     keys = {
         { mode = { "n" }, "<A-,>", vim.cmd.BufferPrevious,  noremap = true, silent = true, desc = "Switch to previous buffer" },
