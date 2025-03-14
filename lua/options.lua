@@ -36,7 +36,3 @@ vim.g.mapleader = " "
 -- TODO: what do these do
 -- vim.g.colorline = 80
 -- vim.g.signcolumn = "80"
-
--- for nvim-tree, TODO: idk what they do yet
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
