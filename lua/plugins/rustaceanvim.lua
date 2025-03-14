@@ -1,10 +1,5 @@
 vim.g.rustaceanvim = {
     server = {
-        on_attach = function()
-            -- TODO i'm not even sure if this works
-            local capabilities = require("blink.cmp").get_lsp_capabilities()
-            require("lspconfig").rust_analyzer.setup({ capabilities = capabilities })
-        end,
         default_settings = {
             ["rust-analyzer"] = {
                 diagnostic = {
