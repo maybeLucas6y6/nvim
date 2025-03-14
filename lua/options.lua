@@ -27,7 +27,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.inccommand = "split" -- pops a preview window when performing substitutions
 
-vim.opt.termguicolors = true
+-- vim.opt.termguicolors = true
 
 vim.opt.updatetime = 50
 
