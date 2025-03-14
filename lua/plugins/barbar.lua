@@ -1,5 +1,6 @@
 return {
     "romgrk/barbar.nvim",
+    lazy = false,
     dependencies = {
         -- TODO
         -- "lewis6991/gitsigns.nvim",
@@ -8,6 +9,7 @@ return {
     init = function() vim.g.barbar_auto_setup = false end,
     opts = {
         animation = false,
+        autohide = false,
     },
     keys = {
         { mode = { "n" }, "<A-,>", vim.cmd.BufferPrevious,  noremap = true, silent = true, desc = "Switch to previous buffer" },
