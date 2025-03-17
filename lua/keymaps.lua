@@ -22,6 +22,11 @@ vim.keymap.set("n", "<leader>rr", vim.lsp.buf.rename, { noremap = true, silent =
 vim.keymap.set("v", "p", [["_dP]], { noremap = true, silent = true, desc = "Prevent paste from overriding your paste buffer" })
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]], { noremap = true, silent = true, desc = "Prevent delete from overriding your paste buffer" })
 
+vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
+
 vim.keymap.set("n", "<leader>lr", function ()
     vim.opt.wrap = not vim.opt.wrap:get()
 end, { noremap = true, silent = true, desc = "Toggle line wrap" })
