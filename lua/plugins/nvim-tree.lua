@@ -13,5 +13,20 @@ return {
                 padding = 2,
             },
         },
+        renderer = {
+            indent_markers = {
+                enable = true,
+            }
+        },
+        git = {
+            timeout = 1000,
+        },
+        filters = {
+            git_ignored = false,
+        },
+        diagnostics = {
+            enable = true,
+            show_on_dirs = true,
+        },
     }
 }
