@@ -21,16 +21,15 @@ return {
                 lspconfig[server_name].setup({
                     capabilities = capabilities,
                     on_attach = function(client, bufnr)
-                        local current_capabilities = client.server_capabilities
-                        if current_capabilities.documentSymbolProvider then
+                        if client.server_capabilities.documentSymbolProvider then
                             navic.attach(client, bufnr)
                         end
                     end,
                 })
             end,
-            -- ["rust_analyzer"] = function()
-            --     -- Do NOT call setup (for rustaceanvim)
-            -- end,
+            ["rust_analyzer"] = function()
+                -- Do NOT call setup (for rustaceanvim)
+            end,
         })
     end,
 }
