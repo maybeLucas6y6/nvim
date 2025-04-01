@@ -5,21 +5,31 @@ return {
     },
     opts = {
         options = {
-            theme = "auto",
+            theme = "catppuccin",
             component_separators = "|",
             section_separators = { left = "", right = "" },
         },
         sections = {
             lualine_a = { "mode" },
-            lualine_b = { "branch", "diff", "diagnostics" },
-            -- lualine_c = { require("nvim-navic").get_location, cond = require("nvim-navic").is_available },
-            lualine_x = { "encoding", "fileformat", "filetype" },
-            lualine_y = { "progress" },
-            lualine_z = { "location" }
+            lualine_b = { "branch", "diff" },
+            lualine_c = {
+                {
+                    "navic",
+                    color_correction = "dynamic"
+                },
+            },
+            lualine_x = {
+                -- "encoding",
+                -- "fileformat",
+                "filetype"
+            },
+            lualine_y = { "diagnostics" },
+            lualine_z = { "progress", "location" }
         },
         extensions = {
             "nvim-tree",
             "nvim-dap-ui",
         }
-    },
+
+    }
 }
