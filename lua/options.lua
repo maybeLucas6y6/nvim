@@ -31,6 +31,10 @@ vim.opt.termguicolors = true
 
 vim.opt.updatetime = 50
 
+vim.opt.swapfile = false
+vim.g.backup = false
+vim.g.writebackup = false
+
 vim.g.mapleader = " "
 
 -- TODO: what do these do
