@@ -7,6 +7,9 @@ vim.g.rustaceanvim = {
             if client.server_capabilities.documentSymbolProvider then
                 require("nvim-navic").attach(client, bufnr)
             end
+            vim.keymap.set("n", "<Leader>rem", ":RustLsp expandMacro<CR>", { noremap = true, silent = true, desc = "RustLsp expand macro recursively" })
+            vim.keymap.set("n", "<Leader>rrm", ":RustLsp rebuildProcMacros<CR>", { noremap = true, silent = true, desc = "RustLsp rebuild procedural macros" })
+            vim.keymap.set("n", "<Leader>rca", ":RustLsp codeAction<CR>", { noremap = true, silent = true, desc = "RustLsp grouped code action" })
         end,
         default_settings = {
             ["rust-analyzer"] = {
