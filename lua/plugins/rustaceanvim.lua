@@ -9,7 +9,7 @@ vim.g.rustaceanvim = {
             end
             vim.keymap.set("n", "<Leader>rem", ":RustLsp expandMacro<CR>", { noremap = true, silent = true, desc = "RustLsp expand macro recursively" })
             vim.keymap.set("n", "<Leader>rrm", ":RustLsp rebuildProcMacros<CR>", { noremap = true, silent = true, desc = "RustLsp rebuild procedural macros" })
-            vim.keymap.set("n", "<Leader>rca", ":RustLsp codeAction<CR>", { noremap = true, silent = true, desc = "RustLsp grouped code action" })
+            vim.keymap.set("n", "<Leader>rca", ":RustLsp codeAction<CR>", { noremap = true, silent = true, desc = "RustLsp grouped code action" }) -- TODO override
         end,
         default_settings = {
             ["rust-analyzer"] = {

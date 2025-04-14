@@ -10,7 +10,10 @@ return {
         },
     },
     config = function()
+        local telescope = require("telescope")
         local builtin = require("telescope.builtin")
+        local telescopeConfig = require("telescope.config")
+
         vim.keymap.set("n", "<leader>ff", builtin.find_files, { noremap = true, silent = true, desc = "Telescope find files" })
         vim.keymap.set("n", "<leader>fg", builtin.live_grep, { noremap = true, silent = true, desc = "Telescope live grep" })
         vim.keymap.set("n", "<leader>fw", builtin.grep_string, { noremap = true, silent = true, desc = "Telescope word under cursor" })
@@ -25,15 +28,32 @@ return {
         vim.keymap.set("n", "<leader>ft", builtin.lsp_type_definitions, { noremap = true, silent = true, desc = "Goto or telescope word's type definition" })
         vim.keymap.set("n", "<leader>fD", builtin.diagnostics, { noremap = true, silent = true, desc = "Telescope buffer diagnostics" })
 
-        require("telescope").setup({
+        -- Clone the default Telescope configuration
+        local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+
+        -- I want to search in hidden/dot files.
+        table.insert(vimgrep_arguments, "--hidden")
+        -- I don't want to search in the `.git` directory.
+        table.insert(vimgrep_arguments, "--glob")
+        table.insert(vimgrep_arguments, "!**/.git/*")
+
+        telescope.setup({
+            defaults = {
+                vimgrep_arguments = vimgrep_arguments,
+            },
             extensions = {
                 ["ui-select"] = {
                     require("telescope.themes").get_dropdown({}),
                 },
             },
+            pickers = {
+                find_files = {
+                    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+                }
+            }
         })
 
-        require("telescope").load_extension("ui-select")
-        require("telescope").load_extension("fzf")
+        telescope.load_extension("ui-select")
+        telescope.load_extension("fzf")
     end,
 }
