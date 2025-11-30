@@ -1,33 +1,34 @@
 return {
-    "neovim/nvim-lspconfig",
-    config = function()
-        vim.lsp.inlay_hint.enable(true, nil)
-        vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#6c7086" })
-        vim.diagnostic.config({
-          virtual_text = true,
-        })
+  "neovim/nvim-lspconfig",
+  config = function()
+    vim.lsp.inlay_hint.enable(true, nil)
 
-        local navic = require("nvim-navic")
-        local blink = require("blink.cmp")
+    vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#6c7086" })
 
-        -- Servers: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.txt
-        -- or :h lspconfig-all
-        local servers = { "lua_ls", "clangd", "pyright" }
+    -- For <= WARN, show only virtual text on current line
+    -- For ERROR, show only virtual line on current line
+    vim.diagnostic.config({
+      virtual_text = {
+        current_line = true,
+        severity = {
+          max = vim.diagnostic.severity.WARN,
+        }
+      },
+      virtual_lines = {
+        current_line = true,
+        severity = {
+          min = vim.diagnostic.severity.ERROR,
+        }
+      },
+      signs = {
+        severity = {
+          min = vim.diagnostic.severity.ERROR,
+        }
+      }
+    })
 
-        local base_capabilities = vim.lsp.protocol.make_client_capabilities()
-        local capabilities = blink.get_lsp_capabilities(base_capabilities)
-
-        for _, server_name in ipairs(servers) do
-            -- TODO: currently disabled. Broken when migrated to 0.11.4
-            vim.lsp.config(server_name, {
-                on_attach = function(client, bufnr)
-                    if client.server_capabilities.documentSymbolProvider then
-                        navic.attach(client, bufnr)
-                    end
-                end,
-                capabilities = capabilities,
-            })
-            vim.lsp.enable(server_name)
-        end
-    end,
+    vim.lsp.enable({
+      "lua_ls"
+    })
+  end,
 }

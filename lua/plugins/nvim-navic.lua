@@ -1,11 +1,12 @@
 return {
-    "SmiteshP/nvim-navic",
-    dependencies = {
-        "neovim/nvim-lspconfig"
+  "SmiteshP/nvim-navic",
+  dependencies = {
+    "neovim/nvim-lspconfig"
+  },
+  opts = {
+    lsp = {
+      auto_attach = true,
     },
-    config = function()
-        require("nvim-navic").setup({
-            highlight = true
-        })
-    end,
+    highlight = true,
+  }
 }
