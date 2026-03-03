@@ -40,3 +40,8 @@ vim.g.mapleader = " "
 vim.diagnostic.config({
   virtual_lines = true,
 })
+
+vim.o.foldcolumn = '0'
+vim.o.foldlevel = 32 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 32
+vim.o.foldenable = true
