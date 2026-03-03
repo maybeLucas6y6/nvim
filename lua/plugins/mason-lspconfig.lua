@@ -7,7 +7,8 @@ return {
   opts = {
     ensure_installed = {
       "lua_ls",
-      "pylyzer",
+      -- "pylyzer",
+      -- "pyright",
     },
     automatic_enable = {
       exclude = {

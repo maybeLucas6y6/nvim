@@ -34,10 +34,20 @@ return {
       return newVirtText
     end
 
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true
+    }
+
+    vim.lsp.config("*", {
+      capabilities = capabilities
+    })
+
     require("ufo").setup({
       open_fold_hl_timeout = 0,
       provider_selector = function(bufnr, filetype, buftype)
-        return { "treesitter", "indent" }
+        return { "lsp" }
       end,
       fold_virt_text_handler = handler
     })
