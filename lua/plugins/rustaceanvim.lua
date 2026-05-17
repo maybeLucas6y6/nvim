@@ -21,7 +21,7 @@ vim.g.rustaceanvim = {
 
 return {
   "mrcjkb/rustaceanvim",
-  version = "^6",
+  version = "^9",
   lazy = false,
   keys = {
     { mode = "n", "<Leader>rem", ":RustLsp expandMacro<CR>", noremap = true, silent = true, desc = "RustLsp expand macro recursively" },
