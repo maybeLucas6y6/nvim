@@ -18,9 +18,5 @@ vim.keymap.set("n", "<leader>lr", function ()
     vim.opt.wrap = not vim.opt.wrap:get()
 end, { noremap = true, silent = true, desc = "Toggle line wrap" })
 
-vim.keymap.set("n", "<leader>ih", function ()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end, { noremap = true, silent = true, desc = "Toggle inlay hint" })
-
 vim.api.nvim_set_keymap("n", "<leader>fj", ":%!jq '.'<CR>", { noremap = true, silent = true, desc = "Format buffer using jq (for json)" })
 vim.api.nvim_set_keymap("n", "<leader>fy", ":%!yq '.'<CR>", { noremap = true, silent = true, desc = "Format buffer using yq (for yaml)" })
