@@ -31,10 +31,11 @@ return {
         desc = "Toggle file detail view",
         callback = function()
           detail = not detail
+          -- NOTE: actually inverted for now
           if detail then
-            require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
-          else
             require("oil").set_columns({ "icon" })
+          else
+            require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
           end
         end,
       },

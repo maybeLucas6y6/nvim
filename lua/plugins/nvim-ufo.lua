@@ -4,7 +4,7 @@ return {
   config = function()
     vim.keymap.set("n", "zR", require("ufo").openAllFolds)
     vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-    vim.api.nvim_set_hl(0, "Folded", { bg = "NONE", fg = "#7aa2f7" })
+    -- vim.api.nvim_set_hl(0, "Folded", { bg = "NONE", fg = "#7aa2f7" })
 
     local handler = function(virtText, lnum, endLnum, width, truncate)
       local newVirtText = {}
@@ -34,20 +34,10 @@ return {
       return newVirtText
     end
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true
-    }
-
-    vim.lsp.config("*", {
-      capabilities = capabilities
-    })
-
     require("ufo").setup({
       open_fold_hl_timeout = 0,
       provider_selector = function(bufnr, filetype, buftype)
-        return { "lsp" }
+        return { "treesitter", "indent" }
       end,
       fold_virt_text_handler = handler
     })
