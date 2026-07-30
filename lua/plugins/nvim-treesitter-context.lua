@@ -1,4 +1,4 @@
-return {
+local M = {
   "nvim-treesitter/nvim-treesitter-context",
   opts = {
     enable = true,
@@ -16,3 +16,5 @@ return {
     on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
   }
 }
+
+return {}
